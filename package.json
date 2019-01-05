@@ -1,7 +1,11 @@
 {
   "name": "vue-basic-auth",
   "version": "0.1.0",
-  "private": true,
+  "description": "A Vue app for basic JWT auth stuff.",
+  "main": "src/index.js",
+  "repository": "https://github.com/Danktuary/vue-basic-auth.git",
+  "author": "Sanctuary <sanc.pw@gmail.com>",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
