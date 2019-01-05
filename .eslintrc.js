@@ -1,5 +1,8 @@
 module.exports = {
 	extends: 'aqua/vue',
+	env: {
+		node: true,
+	},
 	rules: {
 		'arrow-body-style': 'off',
 		'comma-dangle': ['error', 'always-multiline'],
