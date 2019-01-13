@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import App from './App.vue';
+import http from './http.js';
 import router from './router.js';
 import store from './store.js';
 
+Vue.prototype.$http = http;
 Vue.config.productionTip = false;
 
 new Vue({
