@@ -12,27 +12,20 @@
 </template>
 
 <script>
+import http from '@/http.js';
+
 export default {
 	name: 'Threads',
 
 	data() {
 		return {
-			threads: [
-				{
-					id: 1,
-					name: 'Hi, I\'m new',
-				},
-				{
-					id: 2,
-					name: 'Hi, I\'m new 2',
-				},
-				{
-					id: 3,
-					name: 'Hi, I\'m new 3',
-					private: true,
-				},
-			],
+			threads: [],
 		};
+	},
+
+	async mounted() {
+		const { data } = await http.get('/threads');
+		this.threads = data;
 	},
 };
 </script>
