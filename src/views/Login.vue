@@ -30,19 +30,17 @@ export default {
 
 	methods: {
 		async login() {
-			try {
-				const { data } = await this.$http.post('/login', {
-					username: this.username,
-					password: this.password,
-				});
+			await this.$store.dispatch('user/login', {
+				http: this.$http,
+				username: this.username,
+				password: this.password,
+			});
 
-				this.$store.commit('user/set', { user: data.user });
-			} catch (error) {
-				console.error(error);
-			}
+			this.$router.push({ name: 'home' });
 		},
-		logout() {
-			this.$store.commit('user/clear');
+		async logout() {
+			await this.$store.dispatch('user/logout', { http: this.$http });
+			this.$router.push({ name: 'home' });
 		},
 	},
 };
