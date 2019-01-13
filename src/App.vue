@@ -35,7 +35,7 @@ a {
 }
 
 #nav {
-	padding: 30px;
+	padding: 1rem 0;
 
 	a {
 		font-weight: bold;
