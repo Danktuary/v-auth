@@ -11,6 +11,7 @@
 			</div>
 			<div>
 				<input type="submit" value="Submit" />
+				<input type="button" value="Logout" @click="logout" />
 			</div>
 		</form>
 	</div>
@@ -28,8 +29,20 @@ export default {
 	},
 
 	methods: {
-		login() {
-			console.log('Username/password:', `${this.username} - ${this.password}`);
+		async login() {
+			try {
+				const { data } = await this.$http.post('/login', {
+					username: this.username,
+					password: this.password,
+				});
+
+				this.$store.commit('user/set', { user: data.user });
+			} catch (error) {
+				console.error(error);
+			}
+		},
+		logout() {
+			this.$store.commit('user/clear');
 		},
 	},
 };
