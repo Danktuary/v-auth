@@ -1,6 +1,9 @@
+import http from '@/http.js';
+import router from '@/router.js';
+
 export default {
 	namespaced: true,
-	state: JSON.parse(localStorage.getItem('v-user')),
+	state: JSON.parse(localStorage.getItem('v-user')) || {},
 	mutations: {
 		clear(state) {
 			for (const key of Object.keys(state)) {
@@ -18,19 +21,21 @@ export default {
 		},
 	},
 	actions: {
-		async login(context, { http, username, password }) {
+		async login(context, { username, password }) {
 			try {
 				const { data } = await http.post('/login', { username, password });
 
-				http.setAuthHeader(data.user.token);
 				context.commit('set', { ...data.user });
+				http.setAuthHeader(data.user.token);
+				router.push({ name: 'home' });
 			} catch (error) {
 				console.error(error);
 			}
 		},
-		logout(context, { http }) {
+		logout(context) {
 			http.setAuthHeader(null);
-			return Promise.resolve(context.commit('clear'));
+			context.commit('clear');
+			return Promise.resolve(router.push({ name: 'home' }));
 		},
 	},
 };

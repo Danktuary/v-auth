@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form action="/login" method="post" @submit.prevent="login">
+		<form action="/login" method="post" @submit.prevent="login({ username, password })">
 			<div>
 				<label for="username">Username:</label>
 				<input id="username" v-model="username" type="text" />
@@ -11,13 +11,14 @@
 			</div>
 			<div>
 				<input type="submit" value="Submit" />
-				<input type="button" value="Logout" @click="logout" />
 			</div>
 		</form>
 	</div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
 	name: 'Login',
 
@@ -28,20 +29,16 @@ export default {
 		};
 	},
 
-	methods: {
-		async login() {
-			await this.$store.dispatch('user/login', {
-				http: this.$http,
-				username: this.username,
-				password: this.password,
-			});
+	methods: mapActions('user', ['login']),
 
-			this.$router.push({ name: 'home' });
-		},
-		async logout() {
-			await this.$store.dispatch('user/logout', { http: this.$http });
-			this.$router.push({ name: 'home' });
-		},
+	beforeRouteEnter(to, from, next) {
+		next(vm => {
+			const { user } = vm.$store.state;
+			if (user && user.token) {
+				console.log('You\'re already logged in.');
+				vm.$router.push({ name: 'home' });
+			}
+		});
 	},
 };
 </script>
