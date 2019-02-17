@@ -1,16 +1,32 @@
 <template>
 	<div id="app">
-		<div id="nav" class="wrapper">
-			<router-link to="/">Home</router-link> |
-			<router-link to="/login">Login</router-link> |
-			<router-link to="/threads">Threads</router-link> |
-			<router-link to="/logout">Logout</router-link>
-		</div>
+		<nav id="nav" class="wrapper">
+			<div>
+				<ul>
+					<router-link to="/">Home</router-link> |
+					<router-link to="/login">Login</router-link> |
+					<router-link to="/threads">Threads</router-link> |
+					<router-link to="/logout">Logout</router-link>
+				</ul>
+			</div>
+			<user-nav />
+		</nav>
 		<div id="content" class="wrapper">
 			<router-view />
 		</div>
 	</div>
 </template>
+
+<script>
+import UserNav from './views/partials/UserNav.vue';
+
+export default {
+	components: {
+		UserNav,
+	},
+};
+</script>
+
 
 <style lang="scss">
 body {
@@ -35,6 +51,8 @@ a {
 }
 
 #nav {
+	display: flex;
+	justify-content: space-between;
 	padding: 1rem 0;
 
 	a {
