@@ -4,7 +4,7 @@ export default {
 	mutations: {
 		clear(state) {
 			for (const key of Object.keys(state)) {
-				delete state[key];
+				state[key] = null;
 			}
 
 			localStorage.removeItem('v-user');
