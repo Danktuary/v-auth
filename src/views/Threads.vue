@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<ul>
+		<ul v-if="threads.length">
 			<li v-for="thread in threads" :key="thread.id">
 				<router-link :to="{ name: 'thread', params: { id: thread.id }}">
 					#{{ thread.id }}: {{ thread.name }}
@@ -8,6 +8,7 @@
 				</router-link>
 			</li>
 		</ul>
+		<span v-else>No threads yet.</span>
 	</div>
 </template>
 
@@ -23,9 +24,14 @@ export default {
 		};
 	},
 
-	async mounted() {
-		const { data } = await http.get('/threads');
-		this.threads = data;
+	async beforeRouteEnter(to, from, next) {
+		try {
+			const { data } = await http.get('/threads');
+			next(vm => vm.threads = data);
+		} catch (error) {
+			next();
+			console.error(error);
+		}
 	},
 };
 </script>
