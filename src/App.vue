@@ -29,6 +29,8 @@ export default {
 
 
 <style lang="scss">
+@import 'assets/sass/reset.scss';
+
 body {
 	margin: 0;
 	padding: 0;
