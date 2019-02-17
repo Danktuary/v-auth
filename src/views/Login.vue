@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<form action="/login" method="post" @submit.prevent="login({ username, password })">
+		<form action="/login" method="post" @submit.prevent="login">
 			<div>
 				<label for="username">Username:</label>
 				<input id="username" v-model="username" type="text" />
@@ -17,7 +17,9 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import http from '@/http.js';
+import router from '@/router.js';
+import util from '@/util/index.js';
 
 export default {
 	name: 'Login',
@@ -29,13 +31,29 @@ export default {
 		};
 	},
 
-	methods: mapActions('user', ['login']),
+	methods: {
+		async login() {
+			const { username, password } = this;
+
+			try {
+				const { data } = await http.post('/login', { username, password });
+
+				this.$store.commit('user/set', { ...data.user });
+				util.alerts.display('Successfully logged in!');
+
+				http.setAuthHeader(data.user.token);
+				router.push({ name: 'home' });
+			} catch (error) {
+				console.error(error);
+			}
+		},
+	},
 
 	beforeRouteEnter(to, from, next) {
 		next(vm => {
 			const { user } = vm.$store.state;
 			if (user && user.token) {
-				console.log('You\'re already logged in.');
+				util.alerts.display('You\'re already logged in.');
 				vm.$router.push({ name: 'home' });
 			}
 		});

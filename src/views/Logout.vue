@@ -1,9 +1,16 @@
 <script>
+import http from '@/http.js';
+import router from '@/router.js';
+import util from '@/util/index.js';
+
 export default {
 	name: 'Logout',
 
 	mounted() {
-		this.$store.dispatch('user/logout', this);
+		http.setAuthHeader(null);
+		this.$store.commit('user/clear');
+		util.alerts.display('Successfully logged out.');
+		return router.push({ name: 'home' });
 	},
 
 	render: () => null,
