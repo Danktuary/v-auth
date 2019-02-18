@@ -28,7 +28,7 @@ export default {
 
 
 <style lang="scss">
-@import 'assets/sass/reset.scss';
+@import 'assets/sass/app.scss';
 
 body {
 	margin: 0;
