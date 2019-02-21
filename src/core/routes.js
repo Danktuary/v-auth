@@ -20,6 +20,11 @@ export default [
 		component: () => import(/* webpackChunkName: "logout" */ '@v/Logout.vue'),
 	},
 	{
+		path: '/register',
+		name: 'register',
+		component: () => import(/* webpackChunkName: "register" */ '@v/Register.vue'),
+	},
+	{
 		path: '/threads',
 		name: 'threads',
 		component: () => import(/* webpackChunkName: "threads" */ '@v/Threads.vue'),
@@ -28,5 +33,11 @@ export default [
 		path: '/threads/:id',
 		name: 'thread',
 		component: () => import(/* webpackChunkName: "thread" */ '@v/Thread.vue'),
+	},
+	{
+		path: '/profile',
+		name: 'profile',
+		private: true,
+		component: () => import(/* webpackChunkName: "profile" */ '@v/Profile.vue'),
 	},
 ];
