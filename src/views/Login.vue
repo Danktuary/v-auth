@@ -1,19 +1,17 @@
 <template>
-	<div>
-		<form action="/login" method="post" @submit.prevent="login">
-			<div>
-				<label for="username">Username:</label>
-				<input id="username" v-model="username" type="text" />
-			</div>
-			<div>
-				<label for="password">Password:</label>
-				<input id="password" v-model="password" type="password" />
-			</div>
-			<div>
-				<input type="submit" value="Submit" />
-			</div>
-		</form>
-	</div>
+	<form action="/login" method="post" @submit.prevent="login">
+		<fieldset>
+			<label for="username">Username:</label>
+			<input id="username" v-model="username" type="text" />
+		</fieldset>
+		<fieldset>
+			<label for="password">Password:</label>
+			<input id="password" v-model="password" type="password" />
+		</fieldset>
+		<fieldset>
+			<input type="submit" value="Submit" />
+		</fieldset>
+	</form>
 </template>
 
 <script>

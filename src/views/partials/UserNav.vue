@@ -1,20 +1,20 @@
 <template>
 	<div id="user-nav">
-		<ul>
+		<ul class="nav-items">
 			<template v-if="user && user.id">
-				<li>
-					<router-link to="/profile">{{ user.username }}</router-link>
+				<li class="nav-item">
+					<router-link class="nav-link" :to="{ name: 'profile' }">{{ user.username }}</router-link>
 				</li>
-				<li>
-					<router-link to="/logout">Logout</router-link>
+				<li class="nav-item">
+					<router-link class="nav-link" :to="{ name: 'logout' }">Logout</router-link>
 				</li>
 			</template>
 			<template v-else>
-				<li>
-					<router-link to="/login">Login</router-link>
+				<li class="nav-item">
+					<router-link class="nav-link" :to="{ name: 'login' }">Login</router-link>
 				</li>
-				<li>
-					<router-link to="/register">Register</router-link>
+				<li class="nav-item">
+					<router-link class="nav-link" :to="{ name: 'register' }">Register</router-link>
 				</li>
 			</template>
 		</ul>
@@ -30,3 +30,13 @@ export default {
 	computed: mapState(['user']),
 };
 </script>
+
+<style lang="scss">
+#user-nav {
+	.nav-items {
+		display: flex;
+
+		.nav-link {}
+	}
+}
+</style>

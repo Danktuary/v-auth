@@ -1,15 +1,7 @@
 <template>
 	<div id="app">
-		<nav id="nav" class="wrapper">
-			<div>
-				<ul>
-					<router-link to="/">Home</router-link> |
-					<router-link to="/login">Login</router-link> |
-					<router-link to="/threads">Threads</router-link>
-				</ul>
-			</div>
-			<user-nav />
-		</nav>
+		<banner />
+		<nav-bar />
 		<div id="content" class="wrapper">
 			<router-view />
 		</div>
@@ -17,22 +9,26 @@
 </template>
 
 <script>
-import UserNav from '@v/partials/UserNav.vue';
+import Banner from '@v/partials/Banner.vue';
+import NavBar from '@v/partials/NavBar.vue';
 
 export default {
 	components: {
-		UserNav,
+		Banner,
+		NavBar,
 	},
 };
 </script>
 
 
 <style lang="scss">
+@import 'assets/sass/variables.scss';
 @import 'assets/sass/app.scss';
 
 body {
 	margin: 0;
 	padding: 0;
+	font-size: 16px;
 }
 
 a {
@@ -48,7 +44,16 @@ a {
 	font-family: 'Avenir', Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
-	color: #2c3e50;
+	color: $text-color;
+}
+
+#banner {
+	text-align: center;
+	margin: 1rem;
+
+	img {
+		max-width: 100px;
+	}
 }
 
 #nav {
@@ -58,12 +63,19 @@ a {
 
 	a {
 		font-weight: bold;
-		color: #2c3e50;
+		color: $text-color;
 
 		&.router-link-exact-active {
-			color: #42b983;
+			color: $primary;
 		}
 	}
+}
+
+#content {
+	margin-top: 1rem;
+	padding: 1rem;
+	border-radius: 4px;
+	border: 1px solid rgba(#000, 0.2);
 }
 
 .wrapper {
