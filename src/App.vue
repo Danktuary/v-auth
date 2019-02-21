@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import UserNav from './views/partials/UserNav.vue';
+import UserNav from '@v/partials/UserNav.vue';
 
 export default {
 	components: {
