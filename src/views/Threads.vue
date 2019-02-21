@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import http from '@/http.js';
+import http from '@/core/http.js';
 
 export default {
 	name: 'Threads',

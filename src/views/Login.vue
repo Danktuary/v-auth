@@ -17,8 +17,8 @@
 </template>
 
 <script>
-import http from '@/http.js';
-import router from '@/router.js';
+import http from '@/core/http.js';
+import router from '@/core/router.js';
 import util from '@/util/index.js';
 
 export default {
