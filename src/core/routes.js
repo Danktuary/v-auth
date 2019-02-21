@@ -12,22 +12,21 @@ export default [
 		// route level code-splitting
 		// this generates a separate chunk (login.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
-		component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
+		component: () => import(/* webpackChunkName: "login" */ '@/views/Login.vue'),
 	},
 	{
 		path: '/logout',
 		name: 'logout',
-		private: true,
-		component: () => import(/* webpackChunkName: "logout" */ './views/Logout.vue'),
+		component: () => import(/* webpackChunkName: "logout" */ '@/views/Logout.vue'),
 	},
 	{
 		path: '/threads',
 		name: 'threads',
-		component: () => import(/* webpackChunkName: "threads" */ './views/Threads.vue'),
+		component: () => import(/* webpackChunkName: "threads" */ '@/views/Threads.vue'),
 	},
 	{
 		path: '/threads/:id',
 		name: 'thread',
-		component: () => import(/* webpackChunkName: "thread" */ './views/Thread.vue'),
+		component: () => import(/* webpackChunkName: "thread" */ '@/views/Thread.vue'),
 	},
 ];
