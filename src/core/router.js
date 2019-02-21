@@ -10,4 +10,15 @@ const router = new Router({
 	routes,
 });
 
+router.beforeEach((to, from, next) => {
+	const user = localStorage.getItem('user') || {};
+	const privateRoutes = routes.filter(route => route.private);
+
+	if (privateRoutes.includes(to.path) && !user.id) {
+		return next({ name: 'login' });
+	}
+
+	next();
+});
+
 export default router;
