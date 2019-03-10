@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import { JWT } from '#/index.js';
+import { jwt } from '#/index.js';
 import routes from './routes.js';
 
 Vue.use(Router);
@@ -17,9 +17,7 @@ router.beforeEach((to, from, next) => {
 
 	if (privateRoutes.includes(to.name)) {
 		if (!user.id) return next({ name: 'login' });
-
-		const jwt = new JWT(user.token);
-		if (jwt.expired) return next({ name: 'home' });
+		if (jwt.expired(user.token)) return next({ name: 'home' });
 	}
 
 	return next();
