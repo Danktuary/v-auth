@@ -1,5 +1,7 @@
 export default {
 	decode(token) {
+		if (!token) null;
+
 		const [, secret] = token.split('.');
 		let encoded = secret.replace(/-/g, '+').replace(/_/g, '/');
 		const length = encoded.length % 4;
