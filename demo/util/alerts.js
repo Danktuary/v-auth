@@ -1,5 +1,3 @@
-
-
 export default {
 	display(messages = []) {
 		if (typeof messages === 'string') messages = [messages];

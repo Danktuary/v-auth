@@ -17,14 +17,12 @@
 <script>
 export default {
 	name: 'Profile',
-
 	data() {
 		return {
 			username: '',
 			password: '',
 		};
 	},
-
 	methods: {
 		register() {
 			console.log('todo');

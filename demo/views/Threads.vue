@@ -17,13 +17,11 @@ import http from '@/core/http.js';
 
 export default {
 	name: 'Threads',
-
 	data() {
 		return {
 			threads: [],
 		};
 	},
-
 	async beforeRouteEnter(to, from, next) {
 		try {
 			const { data } = await http.get('/threads');

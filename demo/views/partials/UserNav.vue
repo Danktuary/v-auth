@@ -26,7 +26,6 @@ import { mapState } from 'vuex';
 
 export default {
 	name: 'UserNav',
-
 	computed: mapState(['user']),
 };
 </script>
@@ -35,8 +34,6 @@ export default {
 #user-nav {
 	.nav-items {
 		display: flex;
-
-		.nav-link {}
 	}
 }
 </style>

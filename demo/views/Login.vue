@@ -21,14 +21,12 @@ import util from '@/util/index.js';
 
 export default {
 	name: 'Login',
-
 	data() {
 		return {
 			username: '',
 			password: '',
 		};
 	},
-
 	methods: {
 		async login() {
 			const { username, password } = this;
@@ -46,7 +44,6 @@ export default {
 			}
 		},
 	},
-
 	beforeRouteEnter(to, from, next) {
 		next(vm => {
 			const { user } = vm.$store.state;

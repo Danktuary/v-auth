@@ -16,13 +16,11 @@ function handleError(error, next) {
 
 export default {
 	name: 'Thread',
-
 	data() {
 		return {
 			thread: {},
 		};
 	},
-
 	async beforeRouteEnter(to, from, next) {
 		try {
 			const { data } = await http.get(`/threads/${to.params.id}`);
