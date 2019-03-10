@@ -16,6 +16,6 @@ export default class JWT {
 
 	get expired() {
 		const { exp } = this.decodedToken;
-		return !exp ? false : exp <= Date.now();
+		return !exp ? false : exp <= Date.now() / 1000;
 	}
 }
