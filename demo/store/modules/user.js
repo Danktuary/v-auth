@@ -1,6 +1,10 @@
 export default {
 	namespaced: true,
-	state: JSON.parse(localStorage.getItem('v-user')) || {},
+	state: JSON.parse(localStorage.getItem('v-user')) || {
+		id: null,
+		username: null,
+		password: null,
+	},
 	mutations: {
 		clear(state) {
 			for (const key of Object.keys(state)) {
