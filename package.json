@@ -1,9 +1,9 @@
 {
-  "name": "vue-basic-auth",
+  "name": "v-auth",
   "version": "0.1.0",
-  "description": "A Vue app for basic JWT auth stuff.",
+  "description": "A Vue plugin for simple JWT auth interactions.",
   "main": "src/index.js",
-  "repository": "https://github.com/Danktuary/vue-basic-auth.git",
+  "repository": "https://github.com/Danktuary/v-auth.git",
   "author": "Sanctuary <sanc.pw@gmail.com>",
   "license": "MIT",
   "scripts": {

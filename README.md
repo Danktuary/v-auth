@@ -1,4 +1,4 @@
-# vue-basic-auth
+# v-auth
 
 ## Project setup
 ```
